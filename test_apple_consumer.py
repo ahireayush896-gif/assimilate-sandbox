@@ -8,7 +8,9 @@ class TestAppleConsumer(unittest.TestCase):
         self.assertEqual(consumer.size, "medium")
         self.assertEqual(consumer.bites_taken, 0)
         self.assertFalse(consumer.is_eaten)
-        self.assertTrue(consumer.can_eat())
+        self.assertTrue(consumer.can_eat(washed=True, rotten=False))
+        self.assertFalse(consumer.can_eat(washed=False, rotten=False))
+        self.assertFalse(consumer.can_eat(washed=True, rotten=True))
 
     def test_apple_consumer_eating_flow(self):
         consumer = AppleConsumer(variety="Fuji", size="small")

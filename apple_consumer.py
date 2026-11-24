@@ -17,8 +17,13 @@ class AppleConsumer:
         self.is_eaten = False
         self.history = []
 
-    def can_eat(self) -> bool:
-        """Returns True if there is still apple left to consume."""
+    def can_eat(self, washed: bool = True, rotten: bool = False) -> bool:
+        """
+        Returns True if there is still apple left to consume, 
+        it is washed, and not rotten.
+        """
+        if not washed or rotten:
+            return False
         return not self.is_eaten and self.bites_taken < self.max_bites
 
     def eat_bite(self) -> str:
